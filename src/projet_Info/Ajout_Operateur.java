@@ -44,43 +44,43 @@ public class Ajout_Operateur {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(100, 100, 801, 469);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JLabel lblNom = new JLabel("Nom:");
-        lblNom.setBounds(10, 11, 86, 14);
+        lblNom.setBounds(111, 11, 86, 14);
         frame.getContentPane().add(lblNom);
 
         textFieldNom = new JTextField();
-        textFieldNom.setBounds(106, 8, 318, 20);
+        textFieldNom.setBounds(220, 8, 318, 20);
         frame.getContentPane().add(textFieldNom);
         textFieldNom.setColumns(10);
 
         JLabel lblLogin = new JLabel("Login:");
-        lblLogin.setBounds(10, 52, 86, 14);
+        lblLogin.setBounds(111, 55, 86, 14);
         frame.getContentPane().add(lblLogin);
 
         textFieldLogin = new JTextField();
-        textFieldLogin.setBounds(106, 49, 318, 20);
+        textFieldLogin.setBounds(220, 52, 318, 20);
         frame.getContentPane().add(textFieldLogin);
         textFieldLogin.setColumns(10);
 
         JLabel lblEmail = new JLabel("Email:");
-        lblEmail.setBounds(10, 93, 86, 14);
+        lblEmail.setBounds(111, 116, 86, 14);
         frame.getContentPane().add(lblEmail);
 
         textFieldEmail = new JTextField();
-        textFieldEmail.setBounds(106, 90, 318, 20);
+        textFieldEmail.setBounds(220, 113, 318, 20);
         frame.getContentPane().add(textFieldEmail);
         textFieldEmail.setColumns(10);
 
         JLabel lblPassword = new JLabel("Password:");
-        lblPassword.setBounds(10, 134, 86, 14);
+        lblPassword.setBounds(111, 180, 86, 14);
         frame.getContentPane().add(lblPassword);
 
         textFieldPassword = new JTextField();
-        textFieldPassword.setBounds(106, 131, 318, 20);
+        textFieldPassword.setBounds(220, 177, 318, 20);
         frame.getContentPane().add(textFieldPassword);
         textFieldPassword.setColumns(10);
 

@@ -39,21 +39,21 @@ public class Administrateur {
     private void initialize() {
         frmAdministrateur = new JFrame();
         frmAdministrateur.setTitle("ADMINISTRATEUR");
-        frmAdministrateur.setBounds(100, 100, 390, 300);
+        frmAdministrateur.setBounds(100, 100, 801, 474);
         frmAdministrateur.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmAdministrateur.getContentPane().setLayout(null);
         
         JButton btnSaisirUnClient = new JButton("Saisir un client");
-        btnSaisirUnClient.setBounds(10, 11, 185, 23);
+        btnSaisirUnClient.setBounds(262, 87, 185, 23);
         frmAdministrateur.getContentPane().add(btnSaisirUnClient);
         
         JButton btnSupprimerUnClient = new JButton("Supprimer un client");
-        btnSupprimerUnClient.setBounds(10, 58, 185, 23);
+        btnSupprimerUnClient.setBounds(262, 174, 185, 23);
         frmAdministrateur.getContentPane().add(btnSupprimerUnClient);
         
         // Bouton "Modifier un client"
         JButton btnModifierUnClient = new JButton("Modifier un client");
-        btnModifierUnClient.setBounds(10, 109, 185, 23);
+        btnModifierUnClient.setBounds(262, 254, 185, 23);
         frmAdministrateur.getContentPane().add(btnModifierUnClient);
         
         // Action listener for "Saisir un client" button
@@ -65,12 +65,10 @@ public class Administrateur {
             }
         });
         
-        // Action listener for "Modifier un client" button
+        
         btnModifierUnClient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Ouvrir la fenêtre de modification de client
-                // Ici vous devrez appeler votre fenêtre de modification de client
-                // par exemple :
                 modifie_fenetre modifieClientWindow = new modifie_fenetre(null);
                 modifieClientWindow.main(null); // Lancer la fenêtre
             }

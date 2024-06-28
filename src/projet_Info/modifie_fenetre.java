@@ -67,17 +67,17 @@ public class modifie_fenetre {
     private void initialize() {
         frame = new JFrame();
         frame.setTitle("Modification de client");
-        frame.setBounds(100, 100, 450, 350);
+        frame.setBounds(100, 100, 819, 485);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JLabel lblClient = new JLabel("Client");
-        lblClient.setBounds(10, 10, 80, 14);
+        lblClient.setBounds(114, 10, 80, 14);
         frame.getContentPane().add(lblClient);
 
         // JComboBox pour afficher les noms des clients
         comboBoxClients = new JComboBox<>();
-        comboBoxClients.setBounds(100, 7, 150, 20);
+        comboBoxClients.setBounds(232, 7, 150, 20);
         frame.getContentPane().add(comboBoxClients);
 
         JButton btnLoadClients = new JButton("Charger Clients");
@@ -94,51 +94,51 @@ public class modifie_fenetre {
 				}
             }
         });
-        btnLoadClients.setBounds(260, 6, 150, 23);
+        btnLoadClients.setBounds(490, 11, 150, 23);
         frame.getContentPane().add(btnLoadClients);
 
         JLabel lblNom = new JLabel("Nom");
-        lblNom.setBounds(10, 40, 80, 14);
+        lblNom.setBounds(114, 100, 80, 14);
         frame.getContentPane().add(lblNom);
 
         textFieldNom = new JTextField();
-        textFieldNom.setBounds(100, 37, 150, 20);
+        textFieldNom.setBounds(232, 97, 150, 20);
         frame.getContentPane().add(textFieldNom);
         textFieldNom.setColumns(10);
 
         JLabel lblIfu = new JLabel("IFU");
-        lblIfu.setBounds(10, 70, 80, 14);
+        lblIfu.setBounds(114, 157, 80, 14);
         frame.getContentPane().add(lblIfu);
 
         textFieldIfu = new JTextField();
-        textFieldIfu.setBounds(100, 67, 150, 20);
+        textFieldIfu.setBounds(232, 154, 150, 20);
         frame.getContentPane().add(textFieldIfu);
         textFieldIfu.setColumns(10);
 
         JLabel lblRccm = new JLabel("RCCM");
-        lblRccm.setBounds(10, 100, 80, 14);
+        lblRccm.setBounds(114, 198, 80, 14);
         frame.getContentPane().add(lblRccm);
 
         textFieldRccm = new JTextField();
-        textFieldRccm.setBounds(100, 97, 150, 20);
+        textFieldRccm.setBounds(232, 195, 150, 20);
         frame.getContentPane().add(textFieldRccm);
         textFieldRccm.setColumns(10);
 
         JLabel lblAdresse = new JLabel("Adresse");
-        lblAdresse.setBounds(10, 130, 80, 14);
+        lblAdresse.setBounds(114, 240, 80, 14);
         frame.getContentPane().add(lblAdresse);
 
         textFieldAdresse = new JTextField();
-        textFieldAdresse.setBounds(100, 127, 150, 20);
+        textFieldAdresse.setBounds(232, 237, 150, 20);
         frame.getContentPane().add(textFieldAdresse);
         textFieldAdresse.setColumns(10);
 
         JLabel lblCodeApe = new JLabel("Code Ape");
-        lblCodeApe.setBounds(10, 160, 80, 14);
+        lblCodeApe.setBounds(114, 277, 80, 14);
         frame.getContentPane().add(lblCodeApe);
 
         textFieldCodeApe = new JTextField();
-        textFieldCodeApe.setBounds(100, 157, 150, 20);
+        textFieldCodeApe.setBounds(232, 274, 150, 20);
         frame.getContentPane().add(textFieldCodeApe);
         textFieldCodeApe.setColumns(10);
 
@@ -165,7 +165,7 @@ public class modifie_fenetre {
                 }
             }
         });
-        btnSave.setBounds(100, 190, 150, 23);
+        btnSave.setBounds(232, 335, 150, 23);
         frame.getContentPane().add(btnSave);
 
         lblMessage = new JLabel("");

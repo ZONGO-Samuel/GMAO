@@ -40,33 +40,33 @@ public class Operateur_fenetre {
 	private void initialize() {
 		frmOperateur_fenetre = new JFrame();
 		frmOperateur_fenetre.setTitle("OPERATEUR");
-		frmOperateur_fenetre.setBounds(100, 100, 345, 300);
+		frmOperateur_fenetre.setBounds(100, 100, 757, 449);
 		frmOperateur_fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOperateur_fenetre.getContentPane().setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"liste des maintenances"}));
-		comboBox.setBounds(33, 11, 224, 33);
+		comboBox.setBounds(227, 11, 224, 33);
 		frmOperateur_fenetre.getContentPane().add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Liste des prestations"}));
-		comboBox_1.setBounds(33, 55, 224, 33);
+		comboBox_1.setBounds(227, 72, 224, 33);
 		frmOperateur_fenetre.getContentPane().add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Modifier le devis"}));
-		comboBox_2.setBounds(33, 99, 224, 33);
+		comboBox_2.setBounds(227, 142, 224, 33);
 		frmOperateur_fenetre.getContentPane().add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Modifier liste des maintenances"}));
-		comboBox_3.setBounds(33, 143, 224, 33);
+		comboBox_3.setBounds(227, 213, 224, 33);
 		frmOperateur_fenetre.getContentPane().add(comboBox_3);
 		
 		JComboBox comboBox_4 = new JComboBox();
 		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Rapport d'activité pour le client"}));
-		comboBox_4.setBounds(33, 189, 224, 33);
+		comboBox_4.setBounds(227, 278, 224, 33);
 		frmOperateur_fenetre.getContentPane().add(comboBox_4);
 	}
 }

@@ -46,12 +46,12 @@ public class connect_Interface {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(100, 100, 784, 398);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JPanel panel = new JPanel();
-        panel.setBounds(10, 11, 414, 239);
+        panel.setBounds(186, 44, 414, 239);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
 

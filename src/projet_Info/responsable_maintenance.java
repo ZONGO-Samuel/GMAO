@@ -39,44 +39,44 @@ public class responsable_maintenance {
     private void initialize() {
         frame = new JFrame();
         frame.setTitle("RESPONSABLE MAINTENANCE");
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(100, 100, 798, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JButton btnCreerOperateur = new JButton("Créer un compte opérateur");
-        btnCreerOperateur.setBounds(10, 11, 200, 23);
+        btnCreerOperateur.setBounds(214, 9, 200, 23);
         frame.getContentPane().add(btnCreerOperateur);
 
         JButton btnModifierOperateur = new JButton("Modifier un compte opérateur");
-        btnModifierOperateur.setBounds(10, 45, 200, 23);
+        btnModifierOperateur.setBounds(214, 43, 200, 23);
         frame.getContentPane().add(btnModifierOperateur);
 
         JButton btnSupprimerOperateur = new JButton("Supprimer un compte opérateur");
-        btnSupprimerOperateur.setBounds(10, 79, 200, 23);
+        btnSupprimerOperateur.setBounds(214, 77, 200, 23);
         frame.getContentPane().add(btnSupprimerOperateur);
 
         JButton btnSaisirDemande = new JButton("Saisir une demande de maintenance");
-        btnSaisirDemande.setBounds(10, 113, 200, 23);
+        btnSaisirDemande.setBounds(214, 125, 200, 23);
         frame.getContentPane().add(btnSaisirDemande);
 
         JButton btnModifierDemande = new JButton("Modifier une demande de maintenance");
-        btnModifierDemande.setBounds(10, 147, 200, 23);
+        btnModifierDemande.setBounds(214, 168, 200, 23);
         frame.getContentPane().add(btnModifierDemande);
 
         JButton btnSupprimerDemande = new JButton("Supprimer une demande de maintenance");
-        btnSupprimerDemande.setBounds(10, 181, 200, 23);
+        btnSupprimerDemande.setBounds(214, 212, 200, 23);
         frame.getContentPane().add(btnSupprimerDemande);
 
         JButton btnSaisirDevis = new JButton("Saisir un devis");
-        btnSaisirDevis.setBounds(220, 11, 200, 23);
+        btnSaisirDevis.setBounds(551, 11, 200, 23);
         frame.getContentPane().add(btnSaisirDevis);
 
         JButton btnModifierDevis = new JButton("Modifier un devis");
-        btnModifierDevis.setBounds(220, 45, 200, 23);
+        btnModifierDevis.setBounds(551, 60, 200, 23);
         frame.getContentPane().add(btnModifierDevis);
 
         JButton btnSupprimerDevis = new JButton("Supprimer un devis");
-        btnSupprimerDevis.setBounds(220, 79, 200, 23);
+        btnSupprimerDevis.setBounds(551, 113, 200, 23);
         frame.getContentPane().add(btnSupprimerDevis);
 
         // Action listeners
