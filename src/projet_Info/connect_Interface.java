@@ -97,7 +97,7 @@ public class connect_Interface {
                         break;
                     case "OPERATEUR":
                     	// Afficher la fenêtre de l'operateur
-                        Operateur adminWindow1 = new Operateur();
+                        Operateur_fenetre adminWindow1 = new Operateur_fenetre();
                         adminWindow1.main(null);
                         frame.setVisible(false); // Masquer la fenêtre de connexion
 

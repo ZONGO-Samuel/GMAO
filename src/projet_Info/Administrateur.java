@@ -2,11 +2,7 @@ package projet_Info;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
-import javax.swing.JComboBox;
-import java.awt.BorderLayout;
-import javax.swing.JToggleButton;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -47,32 +43,45 @@ public class Administrateur {
         frmAdministrateur.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmAdministrateur.getContentPane().setLayout(null);
         
-        JButton btnNewButton = new JButton("saisir un client");
-        btnNewButton.setBounds(10, 11, 185, 23);
-        frmAdministrateur.getContentPane().add(btnNewButton);
+        JButton btnSaisirUnClient = new JButton("Saisir un client");
+        btnSaisirUnClient.setBounds(10, 11, 185, 23);
+        frmAdministrateur.getContentPane().add(btnSaisirUnClient);
         
-        JButton btnNewButton_1 = new JButton("supprimer un  client");
-        btnNewButton_1.setBounds(10, 58, 185, 23);
-        frmAdministrateur.getContentPane().add(btnNewButton_1);
+        JButton btnSupprimerUnClient = new JButton("Supprimer un client");
+        btnSupprimerUnClient.setBounds(10, 58, 185, 23);
+        frmAdministrateur.getContentPane().add(btnSupprimerUnClient);
         
-        JButton btnNewButton_2 = new JButton("créer un devis");
-        btnNewButton_2.setBounds(10, 105, 185, 23);
-        frmAdministrateur.getContentPane().add(btnNewButton_2);
+        // Bouton "Modifier un client"
+        JButton btnModifierUnClient = new JButton("Modifier un client");
+        btnModifierUnClient.setBounds(10, 109, 185, 23);
+        frmAdministrateur.getContentPane().add(btnModifierUnClient);
         
-        JButton btnNewButton_3 = new JButton("cloturer un dossier");
-        btnNewButton_3.setBounds(10, 155, 185, 23);
-        frmAdministrateur.getContentPane().add(btnNewButton_3);
-        
-        JButton btnNewButton_4 = new JButton("consulter suivi reglement");
-        btnNewButton_4.setBounds(10, 199, 185, 23);
-        frmAdministrateur.getContentPane().add(btnNewButton_4);
-        
-        // Action listener for "saisir un client" button
-        btnNewButton.addActionListener(new ActionListener() {
+        // Action listener for "Saisir un client" button
+        btnSaisirUnClient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Ouvrir la fenêtre de saisie de client
                 Client__fenetre clientWindow = new Client__fenetre();
                 clientWindow.main(null); // Lancer la fenêtre
+            }
+        });
+        
+        // Action listener for "Modifier un client" button
+        btnModifierUnClient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Ouvrir la fenêtre de modification de client
+                // Ici vous devrez appeler votre fenêtre de modification de client
+                // par exemple :
+                modifie_fenetre modifieClientWindow = new modifie_fenetre(null);
+                modifieClientWindow.main(null); // Lancer la fenêtre
+            }
+        });
+        
+        // Action listener for "Supprimer un client" button
+        btnSupprimerUnClient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Ouvrir la fenêtre de suppression de client
+                supprime_client supprimeClientWindow = new supprime_client();
+                supprimeClientWindow.main(null); // Lancer la fenêtre
             }
         });
     }
