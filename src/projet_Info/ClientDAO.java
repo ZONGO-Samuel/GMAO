@@ -6,26 +6,23 @@ import java.util.List;
 
 /**
  * Classe d'accès aux données contenues dans la table client
- * 
- * @version 1.2
  */
 public class ClientDAO {
 
     /**
-     * Paramètres de connexion à la base de données oracle URL, LOGIN et PASS
-     * sont des constantes
+     * Paramètres de connexion à la base de données Oracle.
+     * URL, LOGIN et PASS sont des constantes.
+     * Assurez-vous d'adapter ces valeurs à votre environnement.
      */
     final static String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-    // final static String URL = "jdbc:mysql://localhost/stock";
-
-    final static String LOGIN = "dispositif_sanitaire";  // exemple BDD1
-    final static String PASS = "IC2024";   // exemple BDD1
+    final static String LOGIN = "dispositif_sanitaire";
+    final static String PASS = "IC2024";
 
     /**
-     * Constructeur de la classe
+     * Constructeur de la classe ClientDAO.
+     * Charge le pilote JDBC pour Oracle.
      */
     public ClientDAO() {
-        // chargement du pilote de bases de données
         try {
             Class.forName("oracle.jdbc.OracleDriver");
         } catch (ClassNotFoundException e) {
@@ -34,18 +31,15 @@ public class ClientDAO {
     }
 
     /**
-     * Permet d'ajouter un client dans la table client
-     * Le mode est auto-commit par défaut : chaque insertion est validée
-     * 
-     * @param client le client à ajouter
-     * @return retourne le nombre de lignes ajoutées dans la table
+     * Ajoute un client dans la table client.
+     * @param client Le client à ajouter.
+     * @return Le nombre de lignes ajoutées dans la table (1 si ajouté avec succès, 0 sinon).
      */
     public int ajouter(Client client) {
         Connection con = null;
         PreparedStatement ps = null;
         int retour = 0;
 
-        // connexion à la base de données
         try {
             con = DriverManager.getConnection(URL, LOGIN, PASS);
             ps = con.prepareStatement("INSERT INTO client (nom, ifu, rccm, adresse, codeApe) VALUES (?, ?, ?, ?, ?)");
@@ -56,136 +50,131 @@ public class ClientDAO {
             ps.setString(5, client.getCodeApe());
 
             retour = ps.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (ps != null)
-                    ps.close();
-            } catch (Exception ignore) {
-            }
-            try {
-                if (con != null)
-                    con.close();
-            } catch (Exception ignore) {
-            }
+            fermerRessources(con, ps);
         }
         return retour;
     }
 
     /**
-     * Permet de récupérer un client à partir de son IFU
-     * 
-     * @param ifu l'IFU du client à récupérer
-     * @return le client trouvé; null si aucun client ne correspond à cet IFU
+     * Modifie les informations d'un client dans la table client.
+     * @param clientToModify Le client à modifier.
+     * @return Le nombre de lignes modifiées dans la table (1 si modifié avec succès, 0 sinon).
+     */
+    public int modifier(Client clientToModify) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int retour = 0;
+
+        try {
+            con = DriverManager.getConnection(URL, LOGIN, PASS);
+            ps = con.prepareStatement("UPDATE client SET nom=?, rccm=?, adresse=?, codeApe=? WHERE ifu=?");
+            ps.setString(1, clientToModify.getNom());
+            ps.setString(2, clientToModify.getRccm());
+            ps.setString(3, clientToModify.getAdresse());
+            ps.setString(4, clientToModify.getCodeApe());
+            ps.setString(5, clientToModify.getIfu());
+
+            retour = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fermerRessources(con, ps);
+        }
+        return retour;
+    }
+
+    /**
+     * Récupère un client à partir de son IFU.
+     * @param ifu L'IFU du client à récupérer.
+     * @return Le client trouvé, ou null si aucun client correspondant n'est trouvé.
      */
     public Client getClient(String ifu) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Client retour = null;
+        Client client = null;
 
         try {
             con = DriverManager.getConnection(URL, LOGIN, PASS);
-            ps = con.prepareStatement("SELECT * FROM client WHERE ifu = ?");
+            ps = con.prepareStatement("SELECT * FROM client WHERE ifu=?");
             ps.setString(1, ifu);
-
             rs = ps.executeQuery();
+
             if (rs.next()) {
-                retour = new Client(
-                    rs.getString("nom"),
-                    rs.getString("ifu"),
-                    rs.getString("rccm"),
-                    rs.getString("adresse"),
-                    rs.getString("codeApe")
+                client = new Client(
+                        rs.getString("nom"),
+                        rs.getString("ifu"),
+                        rs.getString("rccm"),
+                        rs.getString("adresse"),
+                        rs.getString("codeApe")
                 );
             }
-        } catch (Exception ee) {
-            ee.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
-            try {
-                if (rs != null)
-                    rs.close();
-            } catch (Exception ignore) {
-            }
-            try {
-                if (ps != null)
-                    ps.close();
-            } catch (Exception ignore) {
-            }
-            try {
-                if (con != null)
-                    con.close();
-            } catch (Exception ignore) {
-            }
+            fermerRessources(con, ps, rs);
         }
-        return retour;
+        return client;
     }
 
     /**
-     * Permet de récupérer tous les clients stockés dans la table clients
-     * 
-     * @return une ArrayList de Clients
+     * Récupère la liste de tous les clients dans la table client.
+     * @return Une liste contenant tous les clients.
      */
     public List<Client> getListeClients() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Client> retour = new ArrayList<Client>();
+        List<Client> clients = new ArrayList<>();
 
         try {
             con = DriverManager.getConnection(URL, LOGIN, PASS);
             ps = con.prepareStatement("SELECT * FROM client");
-
             rs = ps.executeQuery();
+
             while (rs.next()) {
-                retour.add(new Client(
-                    rs.getString("nom"),
-                    rs.getString("ifu"),
-                    rs.getString("rccm"),
-                    rs.getString("adresse"),
-                    rs.getString("codeApe")
-                ));
+                Client client = new Client(
+                        rs.getString("nom"),
+                        rs.getString("ifu"),
+                        rs.getString("rccm"),
+                        rs.getString("adresse"),
+                        rs.getString("codeApe")
+                );
+                clients.add(client);
             }
-        } catch (Exception ee) {
-            ee.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
-            try {
-                if (rs != null)
-                    rs.close();
-            } catch (Exception ignore) {
-            }
-            try {
-                if (ps != null)
-                    ps.close();
-            } catch (Exception ignore) {
-            }
-            try {
-                if (con != null)
-                    con.close();
-            } catch (Exception ignore) {
-            }
+            fermerRessources(con, ps, rs);
         }
-        return retour;
+        return clients;
     }
 
-    // main permettant de tester la classe
-    public static void main(String[] args) throws SQLException {
-        ClientDAO clientDAO = new ClientDAO();
-        
-        // test de la méthode ajouter
-        Client c1 = new Client("Nom1", "IFU1", "RCCM1", "Adresse1", "CodeAPE1");
-        int retour = clientDAO.ajouter(c1);
-        System.out.println(retour + " lignes ajoutées");
-
-        // test de la méthode getClient
-        Client c2 = clientDAO.getClient("IFU1");
-        System.out.println(c2);
-
-        // test de la méthode getListeClients
-        List<Client> liste = clientDAO.getListeClients();
-        for (Client client : liste) {
-            System.out.println(client.toString());
+    /**
+     * Ferme les ressources de connexion à la base de données.
+     * @param con La connexion à fermer.
+     * @param ps Le PreparedStatement à fermer.
+     * @param rs Le ResultSet à fermer.
+     */
+    private void fermerRessources(Connection con, PreparedStatement ps, ResultSet rs) {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
+
+    /**
+     * Ferme les ressources de connexion à la base de données sans ResultSet.
+     * @param con La connexion à fermer.
+     * @param ps Le PreparedStatement à fermer.
+     */
+    private void fermerRessources(Connection con, PreparedStatement ps) {
+        fermerRessources(con, ps, null);
     }
 }

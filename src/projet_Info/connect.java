@@ -1,43 +1,74 @@
 package projet_Info;
 
-import java.awt.EventQueue;
+import java.io.Serializable;
 
-import javax.swing.JFrame;
+/**
+ * Classe Connect
+ * Cette classe représente les informations de connexion d'un utilisateur
+ * @version 1.0
+ */
+public class connect implements Serializable {
 
-public class connect {
+    private static final long serialVersionUID = 1L;
 
-	private JFrame frame;
+    /** 
+     * Login de l'utilisateur
+     */
+    private String login;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					connect window = new connect();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    /**
+     * Mot de passe de l'utilisateur
+     */
+    private String password;
 
-	/**
-	 * Create the application.
-	 */
-	public connect() {
-		initialize();
-	}
+    /**
+     * Constructeur
+     * @param login Login de l'utilisateur
+     * @param password Mot de passe de l'utilisateur
+     */
+    public connect(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+    /**
+     * Getter pour l'attribut login
+     * @return Login de l'utilisateur
+     */
+    public String getLogin() {
+        return login;
+    }
 
+    /**
+     * Setter pour l'attribut login
+     * @param login Nouveau login de l'utilisateur
+     */
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    /**
+     * Getter pour l'attribut password
+     * @return Mot de passe de l'utilisateur
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Setter pour l'attribut password
+     * @param password Nouveau mot de passe de l'utilisateur
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Redéfinition de la méthode toString permettant de définir la traduction de l'objet en String
+     * pour l'affichage par exemple
+     */
+    @Override
+    public String toString() {
+        return "Connect [Login : " + login + ", Password : " + password + "]";
+    }
 }

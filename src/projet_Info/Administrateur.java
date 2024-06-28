@@ -51,10 +51,6 @@ public class Administrateur {
         btnNewButton.setBounds(10, 11, 185, 23);
         frmAdministrateur.getContentPane().add(btnNewButton);
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(194, 11, 30, 22);
-        frmAdministrateur.getContentPane().add(comboBox);
-        
         JButton btnNewButton_1 = new JButton("supprimer un  client");
         btnNewButton_1.setBounds(10, 58, 185, 23);
         frmAdministrateur.getContentPane().add(btnNewButton_1);
@@ -70,22 +66,6 @@ public class Administrateur {
         JButton btnNewButton_4 = new JButton("consulter suivi reglement");
         btnNewButton_4.setBounds(10, 199, 185, 23);
         frmAdministrateur.getContentPane().add(btnNewButton_4);
-        
-        JComboBox comboBox_1 = new JComboBox();
-        comboBox_1.setBounds(194, 58, 30, 22);
-        frmAdministrateur.getContentPane().add(comboBox_1);
-        
-        JComboBox comboBox_2 = new JComboBox();
-        comboBox_2.setBounds(194, 105, 30, 22);
-        frmAdministrateur.getContentPane().add(comboBox_2);
-        
-        JComboBox comboBox_3 = new JComboBox();
-        comboBox_3.setBounds(194, 155, 30, 22);
-        frmAdministrateur.getContentPane().add(comboBox_3);
-        
-        JComboBox comboBox_4 = new JComboBox();
-        comboBox_4.setBounds(194, 199, 30, 22);
-        frmAdministrateur.getContentPane().add(comboBox_4);
         
         // Action listener for "saisir un client" button
         btnNewButton.addActionListener(new ActionListener() {

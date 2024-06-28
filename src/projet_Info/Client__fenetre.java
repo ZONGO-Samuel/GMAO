@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JOptionPane; // Importer JOptionPane
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -17,6 +18,7 @@ public class Client__fenetre {
     private JTextField textFieldRccm;
     private JTextField textFieldAdresse;
     private JTextField textFieldCodeApe;
+    private JLabel lblMessage; // JLabel pour afficher les messages
 
     private ClientDAO clientDAO; // Instance du DAO
 
@@ -49,8 +51,9 @@ public class Client__fenetre {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Saisie de client");
+        frame.setBounds(100, 100, 450, 350); // Ajusté la hauteur pour inclure la zone de message
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JLabel lblNom = new JLabel("Nom");
@@ -114,15 +117,33 @@ public class Client__fenetre {
                 // Appel de la méthode ajouter du ClientDAO pour enregistrer le client
                 int retour = clientDAO.ajouter(client);
                 if (retour > 0) {
-                    System.out.println("Client ajouté avec succès !");
-                    // Vous pouvez ajouter ici une boîte de dialogue de confirmation
+                    // Afficher un message de succès avec JOptionPane
+                    afficherMessage("Client ajouté avec succès !");
                 } else {
-                    System.out.println("Erreur lors de l'ajout du client.");
-                    // Vous pouvez ajouter ici une boîte de dialogue d'erreur
+                    // Afficher un message d'erreur avec JOptionPane si nécessaire
+                    afficherMessage("Erreur lors de l'ajout du client.");
                 }
             }
         });
         btnSave.setBounds(100, 160, 150, 23);
         frame.getContentPane().add(btnSave);
-    } 
+
+        // JLabel pour afficher les messages
+        lblMessage = new JLabel("");
+        lblMessage.setBounds(10, 200, 414, 20);
+        frame.getContentPane().add(lblMessage);
+    }
+
+    /**
+     * Méthode pour afficher un message dans lblMessage.
+     *
+     * @param message le message à afficher
+     */
+    private void afficherMessage(String message) {
+        lblMessage.setText(message);
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
 }
